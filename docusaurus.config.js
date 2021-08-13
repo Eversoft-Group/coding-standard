@@ -5,8 +5,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'Eversoft Coding Standard',
   tagline: 'We are cool',
-  url: 'https://eversoft-group.github.io',
-  baseUrl: '/coding-standard/',
+  url: 'https://eversoft-group.github.io/coding-standard',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -27,7 +27,7 @@ module.exports = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/eversoft-group/coding-stanard',
           label: 'GitHub',
           position: 'right',
         },
