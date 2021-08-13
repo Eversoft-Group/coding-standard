@@ -1,4 +1,4 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
+const lightCodeTheme = require('prism-react-renderer/themes/vsDark');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
@@ -27,7 +27,7 @@ module.exports = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/eversoft-group/coding-stanard',
+          href: 'https://github.com/eversoft-group/coding-standard',
           label: 'GitHub',
           position: 'right',
         },
