@@ -1,50 +1,50 @@
-name: Build & deploy
+name: documentation
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  build:
-    name: Build
+  checks:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
-
-      - name: Install packages for examples
-        run: yarn
-
-      - name: Build project
-        run: yarn build
-
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
-        with:
-          name: production-files
-          path: ./build
-
-  deploy:
-    name: Deploy
-    needs: build
+          node-version: '12.x'
+      - name: Test Build
+        run: |
+          if [ -e yarn.lock ]; then
+            yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
+          npm run build
+  gh-release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          name: production-files
-          path: ./build
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+          node-version: '12.x'
+      - uses: webfactory/ssh-agent@v0.5.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
+      - name: Release to GitHub Pages
+        env:
+          USE_SSH: true
+          GIT_USER: git
+        run: |
+          git config --global user.email "dhpradeep25@gmail.com"
+          git config --global user.name "dhpradeep"
+          if [ -e yarn.lock ]; then
+            yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
+          npm run deploy
