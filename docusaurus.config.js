@@ -3,6 +3,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
+  trailingSlash: false,
   title: "Eversoft Coding Standard",
   tagline: "We are cool",
   url: "https://eversoftgroup.com",
