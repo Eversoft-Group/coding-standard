@@ -6,7 +6,7 @@ module.exports = {
   title: 'Eversoft Coding Standard',
   tagline: 'We are cool',
   url: 'https://eversoft-group.github.io/coding-standard',
-  baseUrl: '/',
+  baseUrl: '/coding-standard/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
