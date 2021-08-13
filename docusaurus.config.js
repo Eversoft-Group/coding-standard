@@ -10,7 +10,7 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'Eversoft', // Usually your GitHub org/user name.
+  organizationName: 'eversoft-group', // Usually your GitHub org/user name.
   projectName: 'coding-standard', // Usually your repo name.
   themeConfig: {
     navbar: {
